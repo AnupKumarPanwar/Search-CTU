@@ -1,0 +1,260 @@
+<title>Search CTU</title>
+<center>
+    <h3>Search CTU</h3>
+    <h6>(c) Anup Kumar Panwar</h6>
+    <meta name="viewport"content="width=device-width, initial-scale=1">
+    <link rel="stylesheet"href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <script src="js.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+
+
+    <script>
+        var buslist = new Array();
+
+
+        buslist[0] = ["1A", "PGI TO PGI", "7.35 A.M to 19.35 hrs", "20 Min ", "PGI", "14/15", "15 Mkt", "16 Mkt", "ISBT-17", "18 Mkt", "19 Mkt", "27 Mkt", "28 Mkt", "CTU Workshop", "Railway Station", "Railway Crossing", "Housing Board", "Manimajra", "MM Town", "M Complex", "Railway Lights", "26 Grain Mkt", "GGC-26", "7-A/7-B", "7/8", "8 Mkt", "9 Mkt", "10 Mkt", "11 Mkt", "OPD PGI"];
+
+        buslist[1] = ["1C", "PGI TO PGI  ", "7.45 A.M. to 19.05 hrs", "20 Min ", "OPD PGI", "Sec-11", "10", "9", "8", "8/7", "7-A/7-B", "GGC-26", "Grain Mkt", "Railway Crossing", "M Complex", "MM Town", "ManiMajra/29", "Housing Board", "Railway Station", "CTU Workshop", "Sec28", "27", "19/18", "ISBT-17", "16 Mkt", "15 Mkt", "14 Mkt", "14/15", "PGI"];
+
+        buslist[2] = ["2A", "Manimajra to Manimajra", "5.30 A.M. to 20.50hrs", "20 Min", "Indira Colony", "MM Town", "M/Complex", "Rly. Cross", "26 Grain Mkt", "19/7", "18/8", "22/17", "16/10", "15/11", "14/12", "Khuda Lahora", "Sarangpur", "Barrier Dhanas", "Dadu Majra", "CTU Workshop", "25/24", "24/15", "23/16", "ISBT-17", "18/21", "19/20", "27/30", "28/29", "Elante Mall", "Colony No - 4", "CTU Workshop", "Railway Station", "R/Cross", "Housing Board", "Manimajra"];
+
+        buslist[3] = ["2B ", "PGI to I.T Park ", "7:00 A.M. to. 19:00 hrs", "30 Min ", "PGI", "IT Park", "New OPD", "PEC", "10/16/HSP", "17/16", "ISBT-17", "17/18", "8/18", "7/19", "26/27", "26 Grain Mkt", "CTU Workshop", "R/Station", "R / Crossing", "Housing Board", "ManiMajra", "Indira Colony", "K.Garh"];
+
+
+        buslist[4] = ["2C ", "Manimajra to Manimajra", "5:35 A.M. to 21:05hrs", "20Min", "Housing Board", "Rly. Station", "CTU Workshop", "Colony No - 4", "Elante Mall", "28/29", "27/30", "19/20", "18/21", "ISBT-17", "16/23", "15/24", "24/25", "CTU Workshop", "Dadu Majra", "Dhanas", "Sarangpur Barrier", "Khuda Lahora", "14/12", "11/15", "10/16", "ISBT-17", "8/18", "7/19", "Grain Mkt", "Rly. Crossing", "M/Complex", "M.M Town", "Indira Colony", "Manimajra"];
+
+        buslist[5] = ["2D", "PGI TO IT Park ", "7:05 A.M. to 16:35 hrs", "35 Min", "PGI", "New OPD 11/15", "10/16", "ISBT-17", "8/18", "26/27", "Grain Mkt", "CTU Workshop", "R. Station", "R. Crossing", "Housing Board", "Manimajra", "Indira Colony", "Kishangarh", "IT Park"];
+
+        buslist[6] = ["2E", "Manimajra to Dhanas ", "6:00 to 17:30 hrs  ", "30 Min. ", "Housing Board", "R/Crossing", "Railway Station", "CTU Workshop", "Grain Mkt", "27/26", "19/7", "18/8", "17/22", "16/10", "New OPD", "PGI", "Khuda lohra", "S.P.Barrier", "Manimajra" ,"Dhanas"];
+
+        buslist[7] = ["2F", "PGI to Panchkula Sec-20 ", "6.00.a.m. to 20:40 hrs", "20Min", "PGI", "O.P.D.", "16 Hosp", "16/10", "ISBT-17", "8/18", "7/19", "26/27", "Grain Mkt", "TPT Chowk", "R/Cross", "Housing Board", "11/15", "12/11", "Rally Chowk", "ISBT-Panchkula Chowk", "Sec-4", "20", "21"];
+
+        buslist[8] = ["4-A", "ISBT-43 TO ISBT-43 ", "7.00 A.M. to 16.00 hrs", "30 Min. ", "42 Mkt", "41 Mkt", "Franko", "Old Barrier (Mohali)", "Ph-6/56", "Maloya", "38west", "DMC", "Dhanas", "S.P.B", "Khuda lohra", "PGI", "11/15", "16Hospital", "ISBT-17", "Aroma", "34/35", "44/43", "ISBT-43"];
+
+        buslist[9] = ["4-C", "ISBT-43 TO ISBT-43", "8.45 A.M to 17.45 hrs", "30 Min. ", "43/44 Mkt", "35/34Mkt", "Aroma", "22/17", "16Hospital", "15/11", "PGI", "Khuda lohra", "S.P.B", "Dhanas", "DMC", "38west", "Maloya", "56/6Ph", "Mohali Old Barrier", "Franko", "41Mkt", "42Mkt", "ISBT-43"];
+
+
+  buslist[10] = ["5-A", "RAMDARBAR TO RAMDARBAR ", "6.30 A.M. to 19.25 hrs", "20 Min ", "Sec-47", "31/47", "31/32", "29/30", "27/28", "27/26", "19/", "18/8", "17/9", "16/10", "15/11", "PGI", "14/15", "24/25", "37/38", "40/38", "39/38W", "Maloya", "39 Mkt", "40 Mkt", "41 Mkt", "42 Mkt", "ISBT-43", "44 Mkt", "45 Mkt", "46 Mkt", "47 Mkt", "RAMDARBAR"];
+
+buslist[11] = ["5-C", "RAMDARBAR TO RAMDARBAR", "6.30 A.M to 19.15 hrs", "20 Min ", "43/44", "44 Mkt", "45 Mkt", "46 Mkt", "47 Mkt", "Ramdarbar", "47 Mkt", "46 Mkt", "45 Mkt", "44 Mkt", "ISBT-43", "42 Mkt", "41 Mkt", "40 Mkt", "39 Mkt", "Maloya", "39/38", "38W/40", "38/37", "25/24", "14/15", "PGI", "11/15", "10/16", "9/17", "8/18", "19/7", "26/27", "28/27", "29/30", "31/32", "31/47", "Sec-47"];
+
+
+buslist[12] = ["7-A", "ISBT-17 TO ISBT-17", "6.30 A.M. to 20.40 hrs", "20 Min ", "22/17", "22/23", "23 Mkt", "24 Mkt", "24/25", "38/25", "38West", "Maloya", "38W/39", "38 Mkt", "37 Mkt", "36/37", "42/41", "42 Mkt", "ISBT-43", "43/44", "42/43", "Attawa", "36/35", "35 Mkt", "34 Mkt", "33 Mkt", "32 Mkt", "31 Mkt", "Ramdarbar", "Indl. Area Ph-II", "Tribue Chowk", "29 Mkt", "29/30", "32/30", "32 Hospital", "20/30", "20 Mkt", "21 Mkt", "Aroma", "22 Mkt", "23/22", "ISBT-17"];
+
+
+
+
+buslist[13] = ["7-C", "ISBT-17 TO ISBT-17", "7.00 A.M to 19.35 hrs", "20 Min ", "Aroma", "21 Mkt", " 20 Mkt", "30/20", "30/32", "32 Hospital", "30/29", "Tribune Chowk", "Indl. Area Ph-II", "Ramdarbar", "31 Mkt", "32 Mkt", "33 Mkt", "34 Mkt", "35 Mkt", "Attawa", "ISBT-43", "43/44", "42", "41/42", "36/37", "37 Mkt", "38 Mkt", "39/38", "Maloya", "38W", "25/38", "25/24", "24 Mkt", "23 Mkt", "23/22", "ISBT-17"];
+
+
+
+buslist[14] = ["8-A", "Mohali Railway Station To PGI", "6:30 A.M. to 20:00 hrs ", "30 Min ", "Mohali Railway Station", "11/10", "49/48", "48 Mkt", "47 Mkt", "46Mkt", "45 Mkt", "44 Mkt", "ISBT-43", "43/44", "35/34", ". 22/17", "16/10", "OPD", "PGI"];
+
+buslist[15] = ["9-A", "Mansa Devi to Mansa Devi ", "6:10 A.M. to 20:10 Hrs", "30-35 Min", "Mansa Devi", "Manimajra", "Housing Board", "TPT Chowk", "Grain Mkt", "26/27", "27/19", "20/30", "32/33", "45/46", "49/50", "63/64", "67/68", "Mauli", "66", "Ph.II", "48/Jagatpur", "48 Mkt", "49/48", "46/47", "47 Mkt", "Indl. Area Ph-II", "R/DarbarInd-ph-II.", "Tribune Chowk", "29", "Indl. Area Ph-I", "28 petrol pump", "CTU Workshop", "R/Station", "R/Cross", "Housing Board", "Manimajra"]; 
+
+
+
+buslist[16] = ["9-C", "Mansa Devi to Mansa Devi ", "6:50 A.M.to 20:50 hrs", "30-35 Min", "Mansa Devi", "Manimajra",  "Housing Board", "R/Cross", "Rly. Station", "CTU Workshop", "Petrol Pump-28", "29/Indl. Area-I", "Tribune Chowk", "Indl. Area Ph-II", "Ram Darbar", "47 Mkt", "47/46", "48/49", "48 Mkt", "Jagatpur/48", "Ph11", "Sec66", "Mauli", "68/67", "63/64", "49/50", "45/46", "32/33", "20/30", "27/19", "26/27", "Grain Mkt", "TPT Chowk", "Housing Board", "Manimajra"];
+
+
+buslist[17] =["10", "ISBT-43 to Mansa Devi ", "06.00 A.M. to 19:30 hrs", "30 Min", "44/51", "ISBT-43", "Colony No - 5", "Sec-45 Mkt", "46 Mkt", "47 Mkt", "Ram Darbar", "Tribune Poultry Farm", "CTU Workshop", "Rly. Stn.", "Housing Board", "Manimajra", "Mansa Devi"];
+
+buslist[18] =["17", "ISBT-43 to Airport", "6:00 A.M. to 20:00 hrs", "30 Min", "42/43", "Attawa", "36/35", "23/22", "ISBT-17", "Aroma", "20 Mkt", "30 Mkt", "29 Mkt", "Indl. Area Ph-I", "Hallomajra", "Airport", "ISBT-43"];
+
+
+buslist[19]=["18", "ISBT-43 to Kaimbwala ", "7:50 A.M. to 16:35 hrs", "40 min ", "44/43", "42/43", "Attawa", "36/35", "23/22", "ISBT-17", "17/18", "9/8", "9 Mkt", "9/10", "MLA Flats", "Sectt.", "High Court", "Kaimbwala", "ISBT-43"];
+
+
+
+
+
+
+buslist[20]=["18-A", "ISBT-43 TO Lake ", "08:10 A.M. to 20:10 hrs", "40 Min", "44/43", "42/43", "Attawa", "36/35", "23/22", "ISBT-17", "17/18", "9/8", "9 Mkt", "9/10", "MLA Flats", "Sectt.", "High Court", "Lake", "ISBT-43"];
+
+
+
+
+
+
+
+
+buslist[21]=["19A", "ISBT-43 to Mansa Devi ", "6:00 A.M. to 20:30 hrs", "30 min ", "Sec-22/23", "ISBT-17", "Aroma", " 21Mkt", "20Mkt", "19/27", "27 Mkt ", "28 Mkt", "CTU Workshop", "R/Station", "R/ Cross", "Modern Complex", "MMTown", "Manimajra", "Mansa Devi", "ISBT-43"];
+
+
+buslist[22]=["20", "Chandigarh to Kharar ", "5:30 to 20:00 ", "15 Min", "Sector -17", "Aroma", "20/21", "33/34", "45/46", "ISBT-43", "Mohali Ph.-7", "Sohana", "Lakhnaur", "Landran", "Sante Majra", "Kharar"];
+
+buslist[23]=["20/78", "ISBT-17 To Banur ", "6:30 A.M. to 17:10 hrs", "01.40 hrs", "ISBT-17", "ISBT-43", "Mohali Ph.-7", "Landran", "Gige Majra", "Banur"];
+
+buslist[24]=["22", "ISBT-43 TO I.T PARK ", "6:00 A.M. to 19:00 ", "20 Min ", "Sec-43/43", "ISBT-43", "36/35", "23/22", "ISBT-17", "17/18", "18 Mkt", "19 Mkt", "27 Mkt", "28 Mkt", "CTU Workshop", "Railway Station", "Railway Crossing", "Housing Board", "Manimajra", "Kishangarh", "IT Park"];
+
+
+buslist[25]=["23-A", "ISBT-43 to Khuda Alisher ", "05:55 A.M. to 20:25 hrs", "15 min", "43/44", "ISBT-43", "35/34", "22/21", "22/17", "16  hospital", "PGI", "OPD", "Engg. College", "Naya Gaon", "Khuda Alisher"];
+
+
+buslist[26]=["24-A ", "ISBT-17 to ISBT-17", "5:45 A.M. to 20:30 hrs", "15 min", "Sec-22/23", "35/36", "Attawa", "ISBT-43", "43/44", "35/34", "35/22", "23/22", "ISBT-17"];
+
+
+
+
+
+
+buslist[27]=["24-C", "ISBT-43 to ISBT-43 ", "06:00 A.M.to 20:30 hrs", "15 min ", "Attawa", "36/35", "23/22", "ISBT-17", "Aroma", "34/35", "44/43", "ISBT-43"];
+
+buslist[28]=["25", "ISBT-17 To Khidrabad", "06:30 AM to 18:30 hrs", "36 min ", "ISBT-17", "Khidrabad", "GH-16", "15/11", "PGI", "Khuda Lohra", "SPB", "Mullanpur", "Parol", "Majra", "Block Sailba", "Khera", "Jhinde Majra"];
+
+buslist[29]=["26", "PGI to Dhakoli Railway Phatak ", "06:00 A.M. to 20:35 hrs", "35 Min", "11/15", "10/16", "ISBT-17", "18/21", "19/20", "27/30", "28/29", "Colony No - 4", "CTU Workshop", "PGI", "Railway Station", "CTU Workshop", "Colony No - 4", "Hallomajra", "Airport", "Zirakpur", "Bauli Sahib", "Vasant Vihar", "Dhakoli"];
+
+buslist[30]=["27", "Sarangpur to Derabassi", "07:20 A.M. to 20:05 hrs", "45 min", "Dhanas", "Kisan Bhawan", "Attawa", "ISBT-43", "43/44", "Attawa", "23/22", "ISBT-17", "Aroma", "Sarangpur", "Derabassi", "21/34", "20/33", "30/32", "Tribune", "Hallomajra", "Airport", "Zirakpur", "Singpura", "Bhankharpur"];
+
+
+buslist[31]=["28", "ISBT-43 to ISBT-43", "07:00 A.M. to 19:00 hrs", "30 Min", "Attawa", "Kisan Bhawan", "36/23", "37/24", "38/25", "DMC", "Dhanas", "Sarangpur Barrier", "Khuda Lahora", "PGI", "OPD", "2/11", "10/16", "ISBT-17", "Aroma", "34/35", "43/44", "ISBT-43"];
+
+buslist[32]=["28-A", "ISBT-43 to ISBT-43", "06:15 A.M. to 20:15 hrs", "30 Min", "43/44", "35/34", "Aroma", "22/17", "16/10", "11/2", "OPD", "PGI", "Khuda Lahora", "Sarangpur Barrier", "Dhanas", "DMC", "25/38", "24/37", "23/36", "Kisan Bhawan", "Attawa", "ISBT-43"];
+
+buslist[33]=["28-C", "Maloya to Mansa Devi", "05:45 A.M. to 20:00 hrs", "45 Min", "D.Majra Vil", "39/40", "38 West", "37 Mkt", "36 Mkt", "35/36", "Kisan Bhawan", "23/22", "ISBT-17", "Sec-8/18", "7/19", "26/27", "G. Mkt", "CTU", "w/s", "R/S", "HBC", "Manimajra", "Maloya", "Mansa Devi"];
+
+buslist[34]=["30", "ISBT-17 to Nada Sahib", "6:05 A.M. to 20:25 hrs", "20 Min", "22/23", "22Mkt", "20Mkt", "19/27", "26/27", "G. Mkt", "R/Cross", "H.B", "Chowk", "M.Majra", "M.H", "Old Pkl", "Nada Sahib", "ISBT-17"];
+
+
+buslist[35]=["30-A", "ISBT-43 to Cantonment", "6:10 A.M. to 21:10 hrs", "30 min", "43/42", "Attawa", "36/35", "Bajwara Chowk", "21/34", "20/33", "30/32", "Piccadilly Tribune Chowk", "Poultry Farm", "Colony No. 4", "CTU Workshop", "Railway Station", "30-A", "Housing Board Chowk", "Manimajra", "MH", "Tank Chowk", "Cantonment", "ISBT-43"];
+
+buslist[36]=["30-B", "ISBT-43 to Sector-4 Pkl", "6:15 A.M. to 21:10 hrs", "20-25 min", "42/43", "Attawa", "36/35", "23/22", "ISBT- 17", "Aroma", "21 Mkt", "20 Mkt", "19/27", "27 Mkt", "Grain Mkt", "Railway Crossing", "Housing Board Chowk", "11/15", "12/11", "Raily Chowk", "ISBT- Panchkula", "ISBT-43"];
+
+
+buslist[37]=["32", "ISBT-17 to Derabassi", "05:45 A.M to 18:30 hrs", "45 Min", "Madhya Marg", "G. Mkt", "HBC", "Manimajra", "M.H.", "Old Panchkula", "Nada Sahib", "Ramgarh", "Mubarikpur", "ISBT-17", "Derabassi"];
+
+
+
+  
+
+
+
+
+
+        function getvalue() {
+            var source = $("#start option:selected").text();
+            var destination = $("#end option:selected").text();
+
+
+            var isavailable=0;
+
+            $('#buses').text("");
+
+
+
+            $('#divbuses').slideToggle();
+            $('#divbuses').slideDown();
+
+
+            $('#buses').append('<tr><td><b>R. No. </b>&nbsp; &nbsp; </td><td><b>Route </b>&nbsp; &nbsp;</td><td><b>Time </b> &nbsp; &nbsp;</td><td><b>Freq.</b></td></tr></table>');
+
+
+            for (var i = 0; i < buslist.length; i++) {
+                for (var j = 0; j < buslist[i].length; j++) {
+                    if (source.match(buslist[i][j])) {
+                        for (var k = 0; k < buslist[i].length; k++) {
+                            if (destination.match(buslist[i][k])) {
+                                $('#buses').append('<tr><td><br>' + buslist[i][0] + '&nbsp; &nbsp;</td><td><br>' + buslist[i][1] + '&nbsp; &nbsp;</td><td><br>' + buslist[i][2] + '&nbsp; &nbsp;</td><td><br>' + buslist[i][3] + '</td></tr><br>');
+
+                                 isavailable=1;
+                               	
+                            } else {
+                                //
+                            }
+                        }
+
+                    }
+                }
+            }
+
+           
+           if(isavailable==0)
+           {
+           	$('#buses').append('<br> No Buses Available');
+
+           }
+
+
+
+
+
+        }
+    </script>
+
+
+
+
+    <div>
+
+        <b>&nbsp; &nbsp; &nbsp; &nbsp; Source :  </b>
+        <select id="start"onchange="getvalue()">
+            <script>
+                var i = 0,
+                    j = 4,
+                    k = 0,
+                    l = 0,
+                    flag = 0;
+                var list_bus = new Array();
+                list_bus[0] = "";
+
+                for (i = 0; i < buslist.length; i++) {
+
+                    for (j = 4; j < buslist[i].length; j++) {
+                        flag = 0;
+
+
+                        for (k = 0; k < list_bus.length; k++) {
+                            if (buslist[i][j] == list_bus[k]) {
+                                flag = 1;
+                                break;
+                            }
+
+                        }
+
+
+                        if (flag == 0) {
+                            list_bus[l] = buslist[i][j];
+                            l++;
+                            flag = 0;
+                        }
+
+
+
+                    }
+                }
+
+
+                for (l = 0; l < list_bus.length; l++) {
+                    document.write("<option>"+ list_bus[l]);
+                }
+            </script>
+
+        </select>
+
+        <br>
+        <b>Destination : </b>
+        <select id="end"onchange="getvalue()">
+            <script>
+                for (l = 0; l < list_bus.length; l++) {
+                    document.write("<option>"+ list_bus[l]);
+                }
+            </script>
+
+        </select>
+    </div>
+
+
+
+
+
+    <div id="divbuses">
+        <h2> Available Buses </h2>
+        <p id="buses"style="color: blue; font-size: 100%;"></p>
+
+
+    </div>
+
+
+
+</center>
